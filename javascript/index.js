@@ -1,28 +1,74 @@
 let ul = document.getElementsByTagName('ul')[0]
 let inputPune = document.getElementById('pune-e-re')
 let buttonShto = document.getElementsByTagName('button')[0]//butoni i pare 
-let buttonFshi = document.createElement('button')
-buttonFshi.innerText = 'delete'
-ul.appendChild(buttonFshi)
+buttonShto.setAttribute('class','btn btn-primary')
 
 /*ky funksion do krijoj pune */
-function shtoPun ( ) {
+function shtoPun () {
+ 
+if(inputPune.value){
     let li = document.createElement('li') 
     let teksti = document.createElement('label')
 teksti.innerText = inputPune.value
     li.appendChild(teksti)
     inputPune.value = ''
     console.log(teksti)
-    ul.appendChild(li)     
+    ul.appendChild(li) 
+    let buttonFshi = document.createElement('button')
+buttonFshi.innerText = 'Delete'
+li.appendChild(buttonFshi)    
+buttonFshi.setAttribute('class', 'btn btnHiq btn-outline-danger')
+
+//update button
+
+let deleteBtn = li.querySelector('.btnHiq')
+
+deleteBtn.addEventListener('click' , fshiLi)
+
+
+
+/* detyre , 
+shto buton me emer(ok, e bere ose perfundo), dhe kete buton do e vendosesh po brenda <li>,
+ky button kur te klikohet do e bej label.innterText me vije ne mes
+*/
+
+}else{
+    let mesazh = document.createElement('h4')
+    mesazh.innerText = 'Plotesohe kutine'
+    let trupi = document.querySelector('.trupi')
+    trupi.appendChild(mesazh)
+    
+    function treSekonda(){
+        mesazh.style.display = 'none'
+    }
+   let koha = setTimeout(treSekonda,3000)
+
+}
+
 } 
  
-buttonShto.addEventListener(
-    'click' , shtoPun 
-)
+//Funsion per fshirje 
+
+function fshiLi(event){
+    console.log('fshi' ,event.currentTarget)
+    
+// event.currentTarget gjen cilin element po klikojme
+//event.currentTarget.parentNode kjo gjen prindin e atij elementi 
+let target = event.currentTarget.parentNode 
+
+target.parentNode.removeChild(target)//kjo eshte ul dhe po heq li
+}
+
+function mbaro(event){
+    console.log('mbaro',event.currentTarget.parentNode)
+ let target = event.currentTarget.parentNode
+let label = target.querySelector('label')
+label.style.textDecoration = 'line-through'
+
+}
+
+window.addEventListener("load", () => {
+    buttonShto.addEventListener('click' , shtoPun)
 
 
-buttonFshi.addEventListener('click',() => {
-  //  ul.removeChild('li')
-    console.log(ul.childNodes)
-
-})
+});
