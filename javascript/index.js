@@ -25,13 +25,15 @@ let deleteBtn = li.querySelector('.btnHiq')
 
 deleteBtn.addEventListener('click' , fshiLi)
 
-
-
+let buttonOk = document.createElement('button')
+buttonOk.innerText = 'E Bere'
+li.appendChild(buttonOk)
+buttonOk.setAttribute('class','btn btn-primary')
 /* detyre , 
 shto buton me emer(ok, e bere ose perfundo), dhe kete buton do e vendosesh po brenda <li>,
 ky button kur te klikohet do e bej label.innterText me vije ne mes
 */
-
+buttonOk.addEventListener('click',mbaro)
 }else{
     let mesazh = document.createElement('h4')
     mesazh.innerText = 'Plotesohe kutine'
@@ -42,11 +44,16 @@ ky button kur te klikohet do e bej label.innterText me vije ne mes
         mesazh.style.display = 'none'
     }
    let koha = setTimeout(treSekonda,3000)
+  
+   
+    
 
 }
 
-} 
- 
+    }
+   
+
+
 //Funsion per fshirje 
 
 function fshiLi(event){
@@ -54,6 +61,7 @@ function fshiLi(event){
     
 // event.currentTarget gjen cilin element po klikojme
 //event.currentTarget.parentNode kjo gjen prindin e atij elementi 
+
 let target = event.currentTarget.parentNode 
 
 target.parentNode.removeChild(target)//kjo eshte ul dhe po heq li
@@ -72,3 +80,6 @@ window.addEventListener("load", () => {
 
 
 });
+
+
+
