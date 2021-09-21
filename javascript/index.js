@@ -9,8 +9,8 @@ function shtoPun () {
 if(inputPune.value){
     let li = document.createElement('li') 
     let teksti = document.createElement('label')
-teksti.innerText = inputPune.value
-    li.appendChild(teksti)
+teksti.innerText = inputPune.value 
+li.appendChild(teksti)
     inputPune.value = ''
     console.log(teksti)
     ul.appendChild(li) 
@@ -68,12 +68,20 @@ target.parentNode.removeChild(target)//kjo eshte ul dhe po heq li
 }
 
 function mbaro(event){
-    console.log('mbaro',event.currentTarget.parentNode)
- let target = event.currentTarget.parentNode
-let label = target.querySelector('label')
-label.style.textDecoration = 'line-through'
-
+    console.log(event.currentTarget.parentNode.children)
+    let tekstLi = event.currentTarget.parentNode.children[0]
+    let buton = event.currentTarget.parentNode.children[2]
+    if (tekstLi.className){
+        buton.innerText = 'E bere'
+        tekstLi.className = ''
+    }else{
+        buton.innerText = 'E pabere'
+        tekstLi.className = 'ok'
+    }
+    
 }
+  
+
 
 window.addEventListener("load", () => {
     buttonShto.addEventListener('click' , shtoPun)

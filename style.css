@@ -26,4 +26,6 @@ body {
     flex-direction: column;
     justify-content: flex-end;
   }
-  
+  .ok{
+   text-decoration: line-through;
+  }
